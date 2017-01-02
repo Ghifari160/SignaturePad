@@ -1,0 +1,76 @@
+.container
+{
+    display: block;
+    background: #dedede;
+    height: 250px;
+    width: 500px;
+    padding: 10px;
+}
+
+.container .pad
+{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #cccccc;
+}
+
+#pad-modal
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    opacity: .2;
+    z-index: 10;
+}
+
+#pad-container
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 520px;
+    height: 326px;
+		margin: -163px 0 0 -260px;
+    z-index: 20;
+}
+
+#pad
+{
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 3px 3px 0 0px;
+    background: #fff;
+		cursor: crosshair;
+}
+
+#pad-btn-cancel
+{
+		display: inline-block;
+    width: 50%;
+    height: 50px;
+    background: #df3e3e;
+    color: #fff;
+    border-radius: 0 0 0 3px;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#pad-btn-done
+{
+	display: inline-block;
+	width: 50%;
+	height: 50px;
+	background: #4267b2;
+	color: #fff;
+	border-radius: 0 0 3px 0;
+	font-size: 25px;
+	line-height: 50px;
+	text-align: center;
+}

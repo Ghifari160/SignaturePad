@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Signature Pad: a Ghifari160 HTML5 Experiment</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+<img src="/author-logo.png" alt="GHIFARI160">
+<h1>Signature Pad: a Ghifari160 HTML5 Experiment</h1>
+<h2>Prototype: pad</h2>
+<a href="/prototype">Back to prototype index</a>
+<hr>
+
+<div class="container">
+    <canvas class="pad" id="pad" width="500" height="250"></canvas>
+</div>
+<button id="padClear">Clear</button>
+<button id="padSubmit">Submit</button>
+<script>
+var canvas = document.getElementById("pad"),
+    ctx = canvas.getContext('2d'),
+    paint = false;
+
+resetCanvas();
+
+canvas.onmousedown = function(e)
+{
+    var mouseX = e.pageX - this.offsetLeft,
+        mouseY = e.pageY - this.offsetTop;
+
+    paint = true;
+    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+    redraw();
+};
+
+canvas.onmousemove = function(e)
+{
+  if(paint)
+  {
+      addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+      redraw();
+  }
+};
+
+canvas.onmouseup = function(e)
+{
+    paint = false;
+};
+
+var clickX = new Array(),
+    clickY = new Array(),
+    clickDrag = new Array();
+
+function addClick(x, y, dragging)
+{
+    clickX.push(x);
+    clickY.push(y);
+    clickDrag.push(dragging);
+}
+
+function redraw()
+{
+    resetCanvas();
+
+    for(var i = 0; i < clickX.length; i++)
+    {
+        ctx.beginPath();
+
+        if(clickDrag[i] && i)
+            ctx.moveTo(clickX[i-1], clickY[i-1]);
+        else
+            ctx.moveTo(clickX[i] - 1, clickY[i]);
+
+        ctx.lineTo(clickX[i], clickY[i]);
+        ctx.closePath();
+        ctx.stroke();
+    }
+}
+
+function resetCanvas()
+{
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 2.5;
+
+    ctx.beginPath();
+    ctx.moveTo(20, ctx.canvas.height - 60);
+    ctx.lineTo(ctx.canvas.width - 20, ctx.canvas.height - 60);
+    ctx.closePath();
+    ctx.stroke();
+}
+
+document.getElementById("padClear").onclick = reset;
+document.getElementById("padSubmit").onclick = submit;
+
+function reset()
+{
+    clickX = new Array();
+    clickY = new Array();
+    clickDrag = new Array();
+
+    resetCanvas();
+}
+
+function submit()
+{
+    console.log(compileJson());
+}
+
+function compileJson()
+{
+    var json = new Object();
+
+    json.version = "0.1";
+    json.path = new Object();
+
+    json.path.x = clickX;
+    json.path.y = clickY;
+
+    return JSON.stringify(json);
+}
+</script>
+</body>
+</html>
