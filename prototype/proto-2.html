@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>proto-2 | A Ghifari160 HTML5 Experiment</title>
+<link rel="stylesheet" href="/style.css">
+<script src="proto-2.js"></script>
+</head>
+
+<body>
+<img alt="GHIFARI160" src="/author-logo.png">
+<h1>Signature Pad: a Ghifari160 HTML5 Experiment</h1>
+<h2>Prototype: proto-2</h2>
+<a href="/prototype">Back to Prototype Index</a>
+<hr>
+
+<textarea id="sig" placeholder="Click to sign"></textarea>
+<script>
+SignaturePad("#sig").click(function(e)
+{
+	SignaturePad(this).acquireSignature();
+}, true);
+</script>
+</body>
+</html>
