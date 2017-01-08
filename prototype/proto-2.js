@@ -211,32 +211,32 @@
 			paint = false;
 		};
 
-		canvas.touchstart = function(e)
+		canvas.ontouchstart = function(e)
 		{
 			e.preventDefault();
 			paint = true;
-			addClick(e.targetTouches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
-				e.targetTouches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10));
+			addClick(e.touches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
+				e.touches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10));
 			redraw();
 		};
 
-		canvas.touchmove = function(e)
+		canvas.ontouchmove = function(e)
 		{
 			e.preventDefault();
 			if(paint)
 			{
-				addClick(e.targetTouches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
-					e.targetTouches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10), true);
+				addClick(e.touches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
+					e.touches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10), true);
 				redraw();
 			}
 		};
 
-		canvas.touchend = function()
+		canvas.ontouchend = function()
 		{
 			paint = false;
 		};
 
-		canvas.touchcancel = function()
+		canvas.ontouchcancel = function()
 		{
 			paint = false;
 		};
