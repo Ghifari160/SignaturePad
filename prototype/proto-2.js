@@ -159,7 +159,7 @@
 	{
 		SignaturePad("body").append('<div id="pad-modal"></div>'
 			+ '<div id="pad-container">'
-			+ '<canvas id="pad" width="500" height="250"></canvas>'
+			+ '<canvas id="pad" width="700" height="400"></canvas>'
 			+ '<div id="pad-btn-cancel">Cancel</div>'
 			+ '<div id="pad-btn-done">Done</div>'
 			+ '</div>');
