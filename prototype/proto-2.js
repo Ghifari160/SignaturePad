@@ -215,8 +215,8 @@
 		{
 			e.preventDefault();
 			paint = true;
-			addClick(e.pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
-				e.pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10));
+			addClick(e.targetTouches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
+				e.targetTouches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10));
 			redraw();
 		};
 
@@ -225,8 +225,8 @@
 			e.preventDefault();
 			if(paint)
 			{
-				addClick(e.pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
-					e.pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10), true);
+				addClick(e.targetTouches[0].pageX - canvas.parentNode.offsetLeft - canvas.offsetLeft - parseInt(window.getComputedStyle(canvas).paddingLeft, 10),
+					e.targetTouches[0].pageY - canvas.parentNode.offsetTop - canvas.offsetTop - parseInt(window.getComputedStyle(canvas).paddingTop, 10), true);
 				redraw();
 			}
 		};
