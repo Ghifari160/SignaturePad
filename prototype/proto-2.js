@@ -155,6 +155,22 @@
 		});
 	};
 
+	SignaturePad.fn.focus = function()
+	{
+		return this.each(function(el)
+		{
+			el.focus();
+		});
+	};
+
+	SignaturePad.fn.blur = function()
+	{
+		return this.each(function(el)
+		{
+			el.blur();
+		});
+	};
+
 	function preparePage()
 	{
 		SignaturePad("body").append('<div id="pad-modal"></div>'
@@ -322,7 +338,6 @@
 	{
 		return this.each(function(el)
 		{
-			console.log(SignaturePad(el).html());
 			if((SignaturePad(el).getDom().nodeName == "TEXTAREA" && SignaturePad(el).val() === "")
 				|| (SignaturePad(el).getDom().nodeName !== "TEXTAREA" && SignaturePad(el).text() === ""))
 			{
@@ -331,6 +346,8 @@
 
 				SignaturePad("#pad-modal").show();
 				SignaturePad("#pad-container").show();
+
+				SignaturePad(el).blur();
 
 				SignaturePad("#pad-btn-done").click(function()
 				{
