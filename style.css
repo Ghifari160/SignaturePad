@@ -1,3 +1,14 @@
+@charset "utf-8";
+
+@import "/assets/OpenSans/OpenSans.css";
+
+body
+{
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: normal;
+}
+
 .container
 {
     display: block;
@@ -38,6 +49,9 @@
     height: 476px;
 		margin: -238px 0 0 -360px;
     z-index: 20;
+		font-family: 'Open sans';
+		font-style: normal;
+		font-weight: 600;
 }
 
 #pad
@@ -60,6 +74,7 @@
     font-size: 25px;
     line-height: 50px;
     text-align: center;
+		cursor: pointer;
 }
 
 #pad-btn-done
@@ -73,4 +88,5 @@
 	font-size: 25px;
 	line-height: 50px;
 	text-align: center;
+	cursor: pointer;
 }
